@@ -4,6 +4,8 @@ const Navbar = () => {
   return (
     <Box
       sx={{
+        position: "fixed",
+        top: 0,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
