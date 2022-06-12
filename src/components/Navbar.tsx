@@ -14,8 +14,9 @@ const Navbar = () => {
         py: 1,
         boxShadow: 1,
         boxSizing: "border-box",
+        backgroundColor: "#fff",
       }}>
-      <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+      <Typography variant="h4" sx={{ fontWeight: "bold" }} color="primary">
         phrasl
       </Typography>
     </Box>

@@ -1,42 +1,35 @@
 import "./styles/global.css"
 import { Box, Button, Typography } from "@mui/material"
 import Navbar from "./components/Navbar"
-import { useState, useEffect } from "react"
-import { Puzzle } from "./types/Puzzle"
-import puzzles from "./puzzles"
+import { useContext } from "react"
+import PuzzleContext from "./contexts/Puzzle"
+import PuzzleDisplay from "./components/PuzzleDisplay"
+import TouchKeyboard from "./components/TouchKeyboard"
 
 function App() {
-  const [puzzle, setPuzzle] = useState<Puzzle | null>(null)
-
-  const getNewPuzzle = () => {
-    // get random puzzle from list of puzzles
-    const index = Math.floor(Math.random() * puzzles.length)
-    setPuzzle(puzzles[index])
-  }
-  useEffect(getNewPuzzle, [])
+  const puzzleContext = useContext(PuzzleContext)
 
   return (
     <Box sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
       <Navbar />
       <Box
         sx={{
+          mt: 8,
           p: 2,
           flex: 1,
           display: "flex",
           flexDirection: "column",
+          justifyContent: "space-between",
           alignItems: "center",
-          justifyContent: "center",
         }}>
-        {puzzle && (
-          <>
-            <Typography variant="h4">{puzzle.category}</Typography>
-            <Typography variant="h2">{puzzle.value}</Typography>
-          </>
-        )}
-        {!puzzle && <Typography variant="h2">Loading...</Typography>}
-        <Button variant="contained" color="primary" onClick={getNewPuzzle}>
+        <PuzzleDisplay />
+        <TouchKeyboard />
+        {/* <Button
+          variant="contained"
+          color="primary"
+          onClick={() => puzzleContext.getNewPuzzle()}>
           New Puzzle
-        </Button>
+        </Button> */}
       </Box>
     </Box>
   )
