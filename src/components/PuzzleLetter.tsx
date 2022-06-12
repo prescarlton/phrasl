@@ -3,8 +3,7 @@ import { useContext } from "react"
 import PuzzleContext from "../contexts/Puzzle"
 
 const PuzzleLetter = ({ letter }: { letter: string }) => {
-  const puzzleContext = useContext(PuzzleContext)
-  const guessedLetters = puzzleContext.guessedLetters
+  const { guessedLetters } = useContext(PuzzleContext)
   return (
     <Box
       className="puzzleLetter"
