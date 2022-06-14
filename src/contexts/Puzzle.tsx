@@ -69,12 +69,14 @@ export const PuzzleProvider = ({ children }: { children: ReactElement }) => {
       setGuessedLetters([...guessedLetters, letter])
     }
     // if the puzzle doesn't include the letter, inc misses
-    if (!puzzle.value.includes(letter)) setMisses(misses + 1)
-    // if user hit maxMisses, they lose
-    if (misses + 1 >= maxMisses) {
-      // if user already guessed maxMisses, end the game
-      setGameStatus("lost")
-      return
+    if (!puzzle.value.includes(letter)) {
+      setMisses(misses + 1)
+      // if user hit maxMisses, they lose
+      if (misses + 1 >= maxMisses) {
+        // if user already guessed maxMisses, end the game
+        setGameStatus("lost")
+        return
+      }
     }
   }
 
