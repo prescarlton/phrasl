@@ -1,17 +1,23 @@
 import "./styles/global.css"
-import { Box } from "@mui/material"
+import { Box, Typography } from "@mui/material"
 import Navbar from "./components/Navbar"
 import { useContext } from "react"
 import PuzzleContext from "./contexts/Puzzle"
 import PuzzleDisplay from "./components/PuzzleDisplay"
 import TouchKeyboard from "./components/TouchKeyboard"
-import GameOver from "./components/GameOver"
+import DialogContext from "./contexts/Dialog"
 
 function App() {
-  const { gameStatus } = useContext(PuzzleContext)
-
+  const { misses, gameStatus } = useContext(PuzzleContext)
+  const { showGameOverDialog } = useContext(DialogContext)
+  if (gameStatus === "lost") showGameOverDialog()
   return (
-    <Box sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
+    <Box
+      sx={{
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+      }}>
       <Navbar />
       <Box
         sx={{
@@ -20,16 +26,13 @@ function App() {
           flex: 1,
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-between",
+          justifyContent: "center",
           alignItems: "center",
+          gap: 4,
         }}>
-        {gameStatus == "playing" && (
-          <>
-            <PuzzleDisplay />
-            <TouchKeyboard />
-          </>
-        )}
-        {gameStatus == "lost" && <GameOver />}
+        <Typography variant="h2">{3 - misses} guesses left</Typography>
+        <PuzzleDisplay />
+        <TouchKeyboard />
       </Box>
     </Box>
   )
