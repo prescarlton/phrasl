@@ -1,6 +1,9 @@
 import { Button } from "@mui/material"
+import { useContext } from "react"
+import PuzzleContext from "../contexts/Puzzle"
 
 const KeyboardLetter = ({ letter }: { letter: string }) => {
+  const { guessLetter, guessedLetters, gameStatus } = useContext(PuzzleContext)
   return (
     <Button
       sx={{
@@ -26,7 +29,15 @@ const KeyboardLetter = ({ letter }: { letter: string }) => {
           color: "primary.main",
           backgroundColor: "#D5D5D5",
         },
-      }}>
+        "&:disabled": {
+          backgroundColor: "#9D9D9D",
+        },
+        transition: ".2s ease-in all",
+      }}
+      onClick={() => guessLetter(letter.toUpperCase())}
+      disabled={
+        guessedLetters.includes(letter.toUpperCase()) || gameStatus != "playing"
+      }>
       {letter}
     </Button>
   )

@@ -4,6 +4,7 @@ const categoryList = [
   "Phrase",
   "Occupation",
   "Event",
+  "On the Map",
 ] as const
 
 export type PuzzleCategory = {
@@ -31,5 +32,9 @@ export const PuzzleCategories: PuzzleCategory[] = [
   {
     label: "Event",
     id: 5,
+  },
+  {
+    label: "On the Map",
+    id: 6,
   },
 ]

@@ -1,10 +1,9 @@
 import { Box, Typography } from "@mui/material"
 import { useContext } from "react"
-import PuzzleContext from "../contexts/Puzzle"
+import PuzzleContext, { invalidLetters } from "../contexts/Puzzle"
 
 const PuzzleLetter = ({ letter }: { letter: string }) => {
-  const puzzleContext = useContext(PuzzleContext)
-  const guessedLetters = puzzleContext.guessedLetters
+  const { guessedLetters } = useContext(PuzzleContext)
   return (
     <Box
       className="puzzleLetter"
@@ -33,7 +32,8 @@ const PuzzleLetter = ({ letter }: { letter: string }) => {
             xs: "1rem",
           },
         }}>
-        {guessedLetters.includes(letter) && letter}
+        {(guessedLetters.includes(letter) || invalidLetters.includes(letter)) &&
+          letter}
       </Typography>
     </Box>
   )

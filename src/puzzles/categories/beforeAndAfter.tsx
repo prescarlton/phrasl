@@ -2,6 +2,183 @@ import { v4 as uuid } from "uuid"
 import { Puzzle } from "../../types/Puzzle"
 
 const puzzleList: Puzzle[] = [
+  { id: uuid(), category: "Before & After", value: "PRECIOUS CARGO PANTS" },
+  { id: uuid(), category: "Before & After", value: "TOM PETTY CASH" },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "MEN IN BLACK BEAN CHILI",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "HEAVEN MUST BE MISSING AN ANGEL FOOD CAKE",
+  },
+  { id: uuid(), category: "Before & After", value: "CLOSET SPACE SHUTTLE" },
+  { id: uuid(), category: "Before & After", value: "LUNCH MONEY MANAGER" },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "SUPERMAN RETURNS AND EXCHANGES",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "THE COWARDLY LION TAMER",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "LONG ISLAND SOUND ASLEEP",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "RAGGEDY ANN AND ANDY ROONEY",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "HOT STOCK TIP OF THE ICEBERG",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "SOME LIKE IT HOT PINK",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "GOOGLE SEARCH AND RESCUE",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "WRITING FOR THE CAMPUS NEWSPAPER",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "I'D RATHER BE FISHING FOR COMPLIMENTS",
+  },
+  { id: uuid(), category: "Before & After", value: "FALSE TOOTH FAIRY" },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "SUPERMARKET CHECKOUT LINE DANCING",
+  },
+  { id: uuid(), category: "Before & After", value: "INNER BEAUTY PAGEANT" },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "THE GOOD THE BAD AND THE UGLY DUCKLING",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "ORGANICALLY GROWN CHILDREN",
+  },
+  { id: uuid(), category: "Before & After", value: "GENERATION GAP JEANS" },
+  { id: uuid(), category: "Before & After", value: "LONESOME DOVE SOAP" },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "CURLING UP WITH A GOOD BOOK OF MATCHES",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "PLYMOUTH ROCK DRUMMER",
+  },
+  { id: uuid(), category: "Before & After", value: "LAZY SUSAN SARANDON" },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "IN CASE OF EMERGENCY BREAK GLASS SLIPPER",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "SAVING PRIVATE RYAN SEACREST",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "EVAPORATED MILK SHAKE",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "BROWNIE RECIPE FOR DISASTER",
+  },
+  { id: uuid(), category: "Before & After", value: "CAT FOOD FOR THOUGHT" },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "MONKEY BUSINESS CARDS",
+  },
+  { id: uuid(), category: "Before & After", value: "OUTER SPACE HEATER" },
+  { id: uuid(), category: "Before & After", value: "GRAVY BOAT CAPTAIN" },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "ADAM'S APPLE TURNOVERS",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "CHANNEL SURFING LESSON",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "SPEAKER OF THE HOUSE OF PANCAKES",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "STUFFED ANIMAL SHELTER",
+  },
+  { id: uuid(), category: "Before & After", value: "KRAFT SINGLES BAR" },
+  { id: uuid(), category: "Before & After", value: "ENGAGEMENT RING TOSS" },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "TAKING THE OATH OF OFFICE SUPPLIES",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "COLD & FLU SEASON TICKET",
+  },
+  { id: uuid(), category: "Before & After", value: "BAD MEDICINE CABINET" },
+  { id: uuid(), category: "Before & After", value: "PLANT LIFE SAVINGS" },
+  { id: uuid(), category: "Before & After", value: "REPORT CARD TRICKS" },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "PATRIOTIC AMERICAN CHEESE",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "BAD HAIR DAYS OF OUR LIVES",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "LUMPY BED AND BREAKFAST",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "KNEE JOINT CHECKING ACOUNT",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "TRUCK STOP IN THE NAME OF LOVE",
+  },
   {
     id: uuid(),
     category: "Before & After",
@@ -10,8 +187,165 @@ const puzzleList: Puzzle[] = [
   {
     id: uuid(),
     category: "Before & After",
-    value: "TRUCK STOP IN THE NAME OF LOVE",
+    value: "CHARLOTTE'S WEB OF LIES",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "LONG-LOST RELATIVE HUMIDITY",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "MR. POTATO HEAD OVER HEELS",
+  },
+  { id: uuid(), category: "Before & After", value: "RUBBER BALL GOWN" },
+  { id: uuid(), category: "Before & After", value: "MEMORY BANK HEIST" },
+  { id: uuid(), category: "Before & After", value: "UNION CARPENTER ANTS" },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "THE MUFFIN MAN OF THE YEAR",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "OPRAH'S BOOK CLUB SANDWICH",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "FEAR OF FLYING SQUIRRELS",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "DENTIST'S DRILL SERGEANT",
+  },
+  { id: uuid(), category: "Before & After", value: "SPARE BEDROOM EYES" },
+  { id: uuid(), category: "Before & After", value: "UGLY BETTY CROCKER" },
+  { id: uuid(), category: "Before & After", value: "PARTY ANIMAL PLANET" },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "LAW AND ORDER OF ONION RINGS",
+  },
+  { id: uuid(), category: "Before & After", value: "LINT ROLLER SKATING" },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "LIAR LIAR PANTS ON FIRE ESCAPE",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "WEDDING NIGHT AT THE MUSEUM",
+  },
+  { id: uuid(), category: "Before & After", value: "TORI SPELLING ERRORS" },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "DIRTY DANCING WITH THE STARS",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "SHOW ME THE MONEY PIT",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "PERNAMENT PRESS CONFERENCE",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "NAPKIN RINGS OF SATURN",
+  },
+  { id: uuid(), category: "Before & After", value: "PIANO BENCH PRESS" },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "SACRIFICAL LAMB CHOPS",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "COFFEE GROUNDS FOR SUSPICION",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "PARTS AND LABOR PAINS",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "DID YOU EVER KNOW THAT YOU'RE MY HERO SANDWICH",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "U.S. DEPARTMENT OF THE INTERIOR DESIGNERS",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "STATIC ELECTRICITY BILL",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "COMEDY ROUTINE MAINTENANCE",
+  },
+  { id: uuid(), category: "Before & After", value: "ADRENALINE RUSH HOUR" },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "THINK OUTSIDE THE BOX OF DOUGHNUTS",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "MARTIAL ARTS AND CRAFTS",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "THE LAND OF THE FREE TRIAL OFFER",
+  },
+  { id: uuid(), category: "Before & After", value: "PUPPET SHOW OF FORCE" },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "SOLAR PANEL OF EXPERTS",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "FOREIGN TONGUE DEPRESSOR",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "PURIFIED WATER BUFFALO",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "SEE SPOT RUN FOR OFFICE",
+  },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "THE LAND DOWN UNDER HYPNOSIS",
+  },
+  { id: uuid(), category: "Before & After", value: "KISS ME KATE WINSLET" },
+  { id: uuid(), category: "Before & After", value: "POKER HAND SANITIZER" },
+  {
+    id: uuid(),
+    category: "Before & After",
+    value: "KARATE MASTER BEDROOM",
   },
 ]
-
 export default puzzleList
