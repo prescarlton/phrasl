@@ -4,6 +4,7 @@ import GameWonDialog from "../components/Dialogs/GameWon"
 import WelcomeDialog from "../components/Dialogs/Welcome"
 import puzzles from "../puzzles"
 import { Puzzle } from "../types/Puzzle"
+import confetti from "canvas-confetti"
 
 type GameStatus = "start" | "playing" | "lost" | "won"
 
@@ -130,6 +131,11 @@ export const PuzzleProvider = ({ children }: { children: ReactElement }) => {
   // handle what happens when the user wins the game
   const handleGameWon = () => {
     setGameStatus("won")
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 },
+    })
     setTimeout(() => openGameWonDialog(), 750)
   }
 
