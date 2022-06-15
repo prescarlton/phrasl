@@ -3,7 +3,7 @@ import { useContext } from "react"
 import PuzzleContext from "../contexts/Puzzle"
 
 const KeyboardLetter = ({ letter }: { letter: string }) => {
-  const { guessLetter, guessedLetters } = useContext(PuzzleContext)
+  const { guessLetter, guessedLetters, gameStatus } = useContext(PuzzleContext)
   return (
     <Button
       sx={{
@@ -35,7 +35,9 @@ const KeyboardLetter = ({ letter }: { letter: string }) => {
         transition: ".2s ease-in all",
       }}
       onClick={() => guessLetter(letter.toUpperCase())}
-      disabled={guessedLetters.includes(letter.toUpperCase())}>
+      disabled={
+        guessedLetters.includes(letter.toUpperCase()) || gameStatus != "playing"
+      }>
       {letter}
     </Button>
   )

@@ -2,7 +2,6 @@ import { ThemeProvider } from "@mui/material"
 import React from "react"
 import ReactDOM from "react-dom/client"
 import App from "./App"
-import { DialogProvider } from "./contexts/Dialog"
 import { PuzzleProvider } from "./contexts/Puzzle"
 import theme from "./themes/main"
 
@@ -11,9 +10,7 @@ root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <PuzzleProvider>
-        <DialogProvider>
-          <App />
-        </DialogProvider>
+        <App />
       </PuzzleProvider>
     </ThemeProvider>
   </React.StrictMode>

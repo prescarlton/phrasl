@@ -5,12 +5,9 @@ import { useContext } from "react"
 import PuzzleContext from "./contexts/Puzzle"
 import PuzzleDisplay from "./components/PuzzleDisplay"
 import TouchKeyboard from "./components/TouchKeyboard"
-import DialogContext from "./contexts/Dialog"
 
 function App() {
-  const { misses, gameStatus } = useContext(PuzzleContext)
-  const { showGameOverDialog } = useContext(DialogContext)
-  if (gameStatus === "lost") showGameOverDialog()
+  const { misses } = useContext(PuzzleContext)
   return (
     <Box
       sx={{

@@ -2,7 +2,7 @@ import { Button, Dialog, DialogContent, DialogTitle } from "@mui/material"
 import { useContext } from "react"
 import PuzzleContext from "../../contexts/Puzzle"
 
-const GameOverDialog = ({
+const GameWonDialog = ({
   open,
   onClose,
 }: {
@@ -23,7 +23,7 @@ const GameOverDialog = ({
           borderRadius: 2,
         },
       }}>
-      <DialogTitle sx={{ fontWeight: "bold" }}>Game Over!</DialogTitle>
+      <DialogTitle sx={{ fontWeight: "bold" }}>You got it!</DialogTitle>
       <DialogContent>
         <Button
           onClick={handleClose}
@@ -36,4 +36,4 @@ const GameOverDialog = ({
     </Dialog>
   )
 }
-export default GameOverDialog
+export default GameWonDialog

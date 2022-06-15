@@ -1,8 +1,11 @@
 import { createContext, ReactElement, useState } from "react"
+import GameOverDialog from "../components/Dialogs/GameOver"
+import GameWonDialog from "../components/Dialogs/GameWon"
+import WelcomeDialog from "../components/Dialogs/Welcome"
 import puzzles from "../puzzles"
 import { Puzzle } from "../types/Puzzle"
 
-type GameStatus = "start" | "playing" | "lost"
+type GameStatus = "start" | "playing" | "lost" | "won"
 
 interface PuzzleContextInterface {
   puzzle: Puzzle
@@ -14,6 +17,8 @@ interface PuzzleContextInterface {
   gameStatus: GameStatus
   updateGameStatus: (status: GameStatus) => void
   resetGame: () => void
+  showWelcomeDialog: () => void
+  showGameOverDialog: () => void
 }
 interface DefaultPuzzleState {
   puzzle: Puzzle
@@ -21,6 +26,9 @@ interface DefaultPuzzleState {
   misses: number
   gameStatus: GameStatus
 }
+
+// letters to exclude from guessing, and always render
+export const invalidLetters = [" ", "'", "!", "?", ",", "&"]
 
 const PuzzleContext = createContext({} as PuzzleContextInterface)
 export default PuzzleContext
@@ -44,6 +52,16 @@ export const PuzzleProvider = ({ children }: { children: ReactElement }) => {
   const [gameStatus, setGameStatus] = useState<GameStatus>(
     defaultStates.gameStatus
   )
+  const [showWelcomeDialog, setShowWelcomeDialog] = useState(false)
+  const [showGameOverDialog, setShowGameOverDialog] = useState(false)
+  const [showGameWonDialog, setShowGameWonDialog] = useState(false)
+
+  const openWelcomeDialog = () => setShowWelcomeDialog(true)
+  const closeWelcomeDialog = () => setShowWelcomeDialog(false)
+  const openGameOverDialog = () => setShowGameOverDialog(true)
+  const closeGameOverDialog = () => setShowGameOverDialog(false)
+  const openGameWonDialog = () => setShowGameWonDialog(true)
+  const closeGameWonDialog = () => setShowGameWonDialog(false)
 
   // number of missed letters a player can have
   const maxMisses = 3
@@ -57,6 +75,22 @@ export const PuzzleProvider = ({ children }: { children: ReactElement }) => {
   // returns list of all words in the puzzle
   const getPuzzleWords = () => {
     return puzzle.value.split(" ")
+  }
+  // returns list of all letters in the puzzle
+  const getPuzzleLetters = () => {
+    return [...new Set(puzzle.value.split(""))].filter(
+      (letter) => !invalidLetters.includes(letter)
+    )
+  }
+
+  // checks if all letters have been guessed
+  // takes in a list of guessed letters rather than
+  // reading from state to account for state not being
+  // updated in the same render cycle this is being called in.
+  const guessedAllLetters = (letters: string[]) => {
+    for (const letter of getPuzzleLetters())
+      if (!letters.includes(letter)) return false
+    return true
   }
 
   // handle user guessing a letter
@@ -74,10 +108,29 @@ export const PuzzleProvider = ({ children }: { children: ReactElement }) => {
       // if user hit maxMisses, they lose
       if (misses + 1 >= maxMisses) {
         // if user already guessed maxMisses, end the game
-        setGameStatus("lost")
+        handleGameOver()
         return
       }
+    } else {
+      if (guessedAllLetters([...guessedLetters, letter])) handleGameWon()
     }
+  }
+  // if the user is really that bad, reveal all the letters
+  const revealAllLetters = () => {
+    setGuessedLetters([...guessedLetters, ...getPuzzleLetters()])
+  }
+
+  // handle what happens when user is dumb enough to hit the max # of misses
+  const handleGameOver = () => {
+    setGameStatus("lost")
+    revealAllLetters()
+    setTimeout(() => openGameOverDialog(), 1000)
+  }
+
+  // handle what happens when the user wins the game
+  const handleGameWon = () => {
+    setGameStatus("won")
+    setTimeout(() => openGameWonDialog(), 750)
   }
 
   // handle updating gameStatus
@@ -87,10 +140,10 @@ export const PuzzleProvider = ({ children }: { children: ReactElement }) => {
 
   // handle resetting everything
   const resetGame = () => {
-    setPuzzle(defaultStates.puzzle)
+    setGameStatus(defaultStates.gameStatus)
     setGuessedLetters(defaultStates.guessedLetters)
     setMisses(defaultStates.misses)
-    setGameStatus(defaultStates.gameStatus)
+    setPuzzle(defaultStates.puzzle)
   }
 
   return (
@@ -105,8 +158,13 @@ export const PuzzleProvider = ({ children }: { children: ReactElement }) => {
         gameStatus,
         updateGameStatus,
         resetGame,
+        showWelcomeDialog: openWelcomeDialog,
+        showGameOverDialog: openGameOverDialog,
       }}>
       {children}
+      <WelcomeDialog open={showWelcomeDialog} onClose={closeWelcomeDialog} />
+      <GameOverDialog open={showGameOverDialog} onClose={closeGameOverDialog} />
+      <GameWonDialog open={showGameWonDialog} onClose={closeGameWonDialog} />
     </PuzzleContext.Provider>
   )
 }
