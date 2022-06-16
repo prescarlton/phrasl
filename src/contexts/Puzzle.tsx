@@ -29,7 +29,7 @@ interface DefaultPuzzleState {
 }
 
 // letters to exclude from guessing, and always render
-export const invalidLetters = [" ", "'", "!", "?", ",", "&"]
+export const invalidLetters = [" ", "'", "!", "?", ",", "&", "."]
 
 const PuzzleContext = createContext({} as PuzzleContextInterface)
 export default PuzzleContext
