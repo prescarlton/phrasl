@@ -1,45 +1,82 @@
-import { Card, CardContent, CardHeader } from "@mui/material"
-import { useContext } from "react"
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  Collapse,
+  Grid,
+  TextField,
+  Typography,
+} from "@mui/material"
+import { useContext, useState } from "react"
 import PuzzleContext from "../contexts/Puzzle"
+import GuessCounterDisplay from "./GuessCounterDisplay"
 import PuzzleWord from "./PuzzleWord"
+import TouchKeyboard from "./TouchKeyboard"
 
 const PuzzleDisplay = () => {
+  const [showSolveField, setShowSolveField] = useState(false)
   const { puzzle, getPuzzleWords } = useContext(PuzzleContext)
   const words = getPuzzleWords()
 
   return (
-    <Card
-      key={puzzle.id}
+    <Grid
+      container
       sx={{
         width: {
-          lg: "50%",
+          lg: "60%",
           xs: "100%",
         },
-      }}>
-      <CardHeader title={puzzle.category} />
-      <CardContent
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          p: 2,
-          overflowX: "auto",
-          columnGap: {
-            lg: 7,
-            xs: 4,
-          },
-          rowGap: {
-            lg: 1,
-            xs: 0.5,
-          },
-        }}>
-        {words.map((word) => (
-          <PuzzleWord
-            key={`${puzzle.id}-${word}-${words.indexOf(word)}`}
-            word={word}
-          />
-        ))}
-      </CardContent>
-    </Card>
+        justifyContent: "center",
+      }}
+      spacing={{ xs: 1, lg: 2 }}>
+      <Grid item xs={12}>
+        <Card
+          sx={{
+            borderRadius: 4,
+            p: 2,
+            display: "flex",
+            flexDirection: "column",
+            gap: 1,
+          }}
+          elevation={2}>
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <GuessCounterDisplay />
+          </Box>
+        </Card>
+      </Grid>
+      <Grid item xs={12}>
+        <Card key={puzzle.id} elevation={2} sx={{ borderRadius: 4 }}>
+          <CardHeader title={puzzle.category} />
+          <CardContent
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              p: 1.5,
+              overflowX: "hidden",
+              columnGap: {
+                lg: 7.25,
+                xs: 4.25,
+              },
+              rowGap: {
+                lg: 1,
+                xs: 0.5,
+              },
+            }}>
+            {words.map((word) => (
+              <PuzzleWord
+                key={`${puzzle.id}-${word}-${words.indexOf(word)}`}
+                word={word}
+              />
+            ))}
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
+        <TouchKeyboard />
+      </Grid>
+    </Grid>
   )
 }
 export default PuzzleDisplay

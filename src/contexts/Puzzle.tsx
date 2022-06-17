@@ -5,6 +5,7 @@ import WelcomeDialog from "../components/Dialogs/Welcome"
 import puzzles from "../puzzles"
 import { Puzzle } from "../types/Puzzle"
 import confetti from "canvas-confetti"
+import _ from "lodash"
 
 type GameStatus = "start" | "playing" | "lost" | "won"
 
@@ -20,6 +21,9 @@ interface PuzzleContextInterface {
   resetGame: () => void
   showWelcomeDialog: () => void
   showGameOverDialog: () => void
+  calcMaxGuesses: () => number
+  attemptSolvePuzzle: (value: string) => void
+  maxGuesses: number
 }
 interface DefaultPuzzleState {
   puzzle: Puzzle
@@ -37,6 +41,11 @@ export default PuzzleContext
 export const PuzzleProvider = ({ children }: { children: ReactElement }) => {
   // select a random puzzle to start with
   const randomPuzzle = () => puzzles[Math.floor(Math.random() * puzzles.length)]
+  const testPuzzle: Puzzle = {
+    id: "lkdflkwqjebrqlkwebrjq",
+    value: "ORGANICALLY GROWN CHILDREN",
+    category: "Phrase",
+  }
 
   const defaultStates: DefaultPuzzleState = {
     puzzle: randomPuzzle(),
@@ -49,7 +58,7 @@ export const PuzzleProvider = ({ children }: { children: ReactElement }) => {
   const [guessedLetters, setGuessedLetters] = useState<string[]>(
     defaultStates.guessedLetters
   )
-  const [misses, setMisses] = useState(defaultStates.misses)
+  const [guesses, setGuesses] = useState(defaultStates.misses)
   const [gameStatus, setGameStatus] = useState<GameStatus>(
     defaultStates.gameStatus
   )
@@ -65,7 +74,10 @@ export const PuzzleProvider = ({ children }: { children: ReactElement }) => {
   const closeGameWonDialog = () => setShowGameWonDialog(false)
 
   // number of missed letters a player can have
-  const maxMisses = 3
+  const calcMaxGuesses = () => {
+    return Math.ceil(_.uniq(getPuzzleLetters()).length / 1.2)
+  }
+  const maxGuesses = 5
 
   // returns random puzzle from list of puzzles
   const getNewPuzzle = () => {
@@ -102,20 +114,22 @@ export const PuzzleProvider = ({ children }: { children: ReactElement }) => {
     } else {
       // else, add it to the list
       setGuessedLetters([...guessedLetters, letter])
-    }
-    // if the puzzle doesn't include the letter, inc misses
-    if (!puzzle.value.includes(letter)) {
-      setMisses(misses + 1)
-      // if user hit maxMisses, they lose
-      if (misses + 1 >= maxMisses) {
-        // if user already guessed maxMisses, end the game
-        handleGameOver()
-        return
-      }
-    } else {
       if (guessedAllLetters([...guessedLetters, letter])) handleGameWon()
     }
+    if (!getPuzzleLetters().includes(letter)) {
+      setGuesses(guesses + 1)
+      if (guesses + 1 >= maxGuesses) handleGameOver()
+    }
   }
+
+  // solve the puzzle
+  const attemptSolvePuzzle = (value: string) => {
+    if (value == puzzle.value) {
+      revealAllLetters()
+      handleGameWon()
+    }
+  }
+
   // if the user is really that bad, reveal all the letters
   const revealAllLetters = () => {
     setGuessedLetters([...guessedLetters, ...getPuzzleLetters()])
@@ -148,7 +162,7 @@ export const PuzzleProvider = ({ children }: { children: ReactElement }) => {
   const resetGame = () => {
     setGameStatus(defaultStates.gameStatus)
     setGuessedLetters(defaultStates.guessedLetters)
-    setMisses(defaultStates.misses)
+    setGuesses(defaultStates.misses)
     setPuzzle(defaultStates.puzzle)
   }
 
@@ -160,12 +174,15 @@ export const PuzzleProvider = ({ children }: { children: ReactElement }) => {
         getPuzzleWords,
         guessedLetters,
         guessLetter,
-        misses,
+        misses: guesses,
         gameStatus,
         updateGameStatus,
         resetGame,
         showWelcomeDialog: openWelcomeDialog,
         showGameOverDialog: openGameOverDialog,
+        calcMaxGuesses,
+        attemptSolvePuzzle,
+        maxGuesses,
       }}>
       {children}
       <WelcomeDialog open={showWelcomeDialog} onClose={closeWelcomeDialog} />

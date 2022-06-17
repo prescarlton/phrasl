@@ -12,12 +12,12 @@ const Navbar = () => {
         width: "100%",
         px: 2,
         py: 1,
-        boxShadow: 1,
+        boxShadow: 2,
         boxSizing: "border-box",
-        backgroundColor: "#fff",
+        backgroundColor: "primary.main",
       }}>
-      <Typography variant="h4" sx={{ fontWeight: "bold" }} color="primary">
-        phrasl
+      <Typography variant="h4" sx={{ fontWeight: "bold", color: "#fff" }}>
+        phrased.
       </Typography>
     </Box>
   )
