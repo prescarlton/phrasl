@@ -8,7 +8,7 @@ const PuzzleLetter = ({ letter }: { letter: string }) => {
     <Box
       className="puzzleLetter"
       sx={{
-        border: 2,
+        border: 2.5,
         borderColor: letter ? "#D5D5D5" : "transparent",
         p: 0.75,
         display: "inline-flex",
@@ -24,6 +24,7 @@ const PuzzleLetter = ({ letter }: { letter: string }) => {
         },
         flex: 1,
         boxSizing: "content-box",
+        borderRadius: 1,
       }}>
       <Typography
         sx={{

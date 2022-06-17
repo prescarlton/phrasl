@@ -18,7 +18,7 @@ function App() {
       <Navbar />
       <Box
         sx={{
-          mt: 8,
+          mt: 6,
           p: 2,
           flex: 1,
           display: "flex",
@@ -27,9 +27,7 @@ function App() {
           alignItems: "center",
           gap: 4,
         }}>
-        <Typography variant="h2">{3 - misses} guesses left</Typography>
         <PuzzleDisplay />
-        <TouchKeyboard />
       </Box>
     </Box>
   )
