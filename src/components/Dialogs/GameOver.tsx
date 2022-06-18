@@ -1,6 +1,14 @@
-import { Button, Dialog, DialogContent, DialogTitle } from "@mui/material"
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from "@mui/material"
 import { useContext } from "react"
 import PuzzleContext from "../../contexts/Puzzle"
+import { gameOverParagraph } from "./GameOverContent"
 
 const GameOverDialog = ({
   open,
@@ -20,19 +28,23 @@ const GameOverDialog = ({
       onClose={handleClose}
       PaperProps={{
         sx: {
-          borderRadius: 2,
+          width: "500px",
+          height: "300px",
         },
       }}>
-      <DialogTitle sx={{ fontWeight: "bold" }}>Game Over!</DialogTitle>
+      <DialogTitle sx={{ fontWeight: "bold" }} variant="h2">
+        Game Over!
+      </DialogTitle>
       <DialogContent>
-        <Button
-          onClick={handleClose}
-          variant="contained"
-          color="primary"
-          sx={{ borderRadius: 2 }}>
+        {gameOverParagraph && (
+          <DialogContentText>{gameOverParagraph}</DialogContentText>
+        )}
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleClose} variant="contained" color="primary">
           Play Again
         </Button>
-      </DialogContent>
+      </DialogActions>
     </Dialog>
   )
 }
