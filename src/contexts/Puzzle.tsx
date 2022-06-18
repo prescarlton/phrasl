@@ -62,7 +62,7 @@ export const PuzzleProvider = ({ children }: { children: ReactElement }) => {
   const [gameStatus, setGameStatus] = useState<GameStatus>(
     defaultStates.gameStatus
   )
-  const [showWelcomeDialog, setShowWelcomeDialog] = useState(false)
+  const [showWelcomeDialog, setShowWelcomeDialog] = useState(true)
   const [showGameOverDialog, setShowGameOverDialog] = useState(false)
   const [showGameWonDialog, setShowGameWonDialog] = useState(false)
 

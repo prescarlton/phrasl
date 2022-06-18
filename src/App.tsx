@@ -1,13 +1,9 @@
 import "./styles/global.css"
-import { Box, Typography } from "@mui/material"
+import { Box } from "@mui/material"
 import Navbar from "./components/Navbar"
-import { useContext } from "react"
-import PuzzleContext from "./contexts/Puzzle"
 import PuzzleDisplay from "./components/PuzzleDisplay"
-import TouchKeyboard from "./components/TouchKeyboard"
 
 function App() {
-  const { misses } = useContext(PuzzleContext)
   return (
     <Box
       sx={{

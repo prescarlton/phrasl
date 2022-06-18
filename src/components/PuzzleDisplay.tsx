@@ -1,22 +1,11 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  Collapse,
-  Grid,
-  TextField,
-  Typography,
-} from "@mui/material"
-import { useContext, useState } from "react"
+import { Box, Card, CardContent, CardHeader, Grid } from "@mui/material"
+import { useContext } from "react"
 import PuzzleContext from "../contexts/Puzzle"
 import GuessCounterDisplay from "./GuessCounterDisplay"
 import PuzzleWord from "./PuzzleWord"
 import TouchKeyboard from "./TouchKeyboard"
 
 const PuzzleDisplay = () => {
-  const [showSolveField, setShowSolveField] = useState(false)
   const { puzzle, getPuzzleWords } = useContext(PuzzleContext)
   const words = getPuzzleWords()
 
@@ -28,7 +17,6 @@ const PuzzleDisplay = () => {
           lg: "60%",
           xs: "100%",
         },
-        justifyContent: "center",
       }}
       spacing={{ xs: 1, lg: 2 }}>
       <Grid item xs={12}>
